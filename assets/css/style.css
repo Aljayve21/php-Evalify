@@ -1,0 +1,97 @@
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    flex: 1 0 auto;
+}
+footer {
+    flex-shrink: 0;
+}
+
+.accordion-group {
+    border: 0px;
+}
+
+#myInputOP {
+    font-size: large;
+    height: 45px !important;
+}
+
+.inputc {
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+}
+
+.login_user{
+    background-color: #4b4a49;
+    text-indent: 7px;
+    color: white;
+}
+
+.tr2{
+    background-color: #b0c7de;
+}
+
+.text1 {
+    font-size: large; 
+    height: 35px !important; 
+    text-indent: 7px !important;
+}
+
+.JC {
+    font-size: large;
+    height: 45px !important;
+}
+
+.checkbox {
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+}
+
+.accordion-group {
+    border: 0px;
+}
+
+.table2 {
+    width: 100% !important;
+
+}
+
+.event_name {
+    text-indent: 5px !important;
+    height: 30px !important;
+}
+
+.sy {
+    text-indent: 5px !important;
+    height: 30px !important;
+}
+
+.date_start {
+    height: 30px !important;
+}
+
+.date_end {
+    height: 30px !important;
+}
+
+.place {
+    text-indent: 10px !important;
+}
+
+.addme {
+    margin-bottom: 10px !important;
+}
+
+.btn-sy {
+    text-align: left !important; 
+    text-indent: 7px !important;
+}
+
+.tabletall {
+    width: 97% !important;
+}
