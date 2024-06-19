@@ -79,7 +79,7 @@ include('session.php');
 <header class="jumbotron subhead" id="overview">
   <div class="container">
     <h1>List of Events</h1>
-  <p class="lead">Judging Management System</p>
+  <p class="lead">Event Scoresheets Management System</p>
   </div>
 </header>
 
@@ -146,7 +146,7 @@ include('session.php');
                                  
                                  <strong>School Year:</strong><br />
  
-                                  <input name="sy" class="form-control btn-block" style="text-indent: 5px !important; height: 30px !important;" type="text" placeholder="yyyy-yyyy" required="true"/>
+                                  <input name="sy" class="form-control btn-block" style="text-indent: 5px !important; height: 30px !important;" type="text" placeholder="yyyy" required="true"/>
                                   <br /> 
                           
                                   <strong>Date Start:</strong><br />
@@ -319,11 +319,11 @@ $MECtr = $MEctrQuery->rowCount();  ?>
                 
                 <div class="collapse indent" id="listSubEvents<?php echo $main_event_id; ?>">
                                     
-                                    <h4>List of Sub-Events</h4>
+                                    <h4>List of Portitions</h4>
                                     <table align="center" class="table table-bordered" id="example">
                                     
                                     <thead>
-                                    <th><strong>Sub-Event Title</strong></th>
+                                    <th><strong>Portion Title</strong></th>
                                     <th><center><strong>Status</strong></center></th>
                                     <th><center><strong>Actions</strong></center></th>
                                     </thead>
@@ -378,7 +378,7 @@ $MECtr = $MEctrQuery->rowCount();  ?>
                                         $se_new_name=$_POST['se_new_name'];
                                        
                                       
-                                       /* contestants */
+                                      
                                        
                                         $conn->query("update sub_event set event_name='$se_new_name' where subevent_id='$sub_event_id'");
                                        
