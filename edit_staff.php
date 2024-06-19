@@ -70,17 +70,13 @@
     <tr>
     <td>
     Firstname:
-    <input type="text" name="fname" class="form-control" placeholder="Firstname" value="<?php echo $row['fname']; ?>" aria-describedby="basic-addon1" required autofocus>
+    <input type="text" name="fname" class="form-control" placeholder="Firstname" value="<?php echo $row['firstname']; ?>" aria-describedby="basic-addon1" required autofocus>
  </td>
-    <td>&nbsp;</td>
-    <td>
-    Middlename:
-    <input type="text" name="mname" class="form-control" placeholder="Middlename" value="<?php echo $row['mname']; ?>" aria-describedby="basic-addon1" required autofocus>
- </td>
+    
     <td>&nbsp;</td>
     <td>
     Lastname:
-    <input type="text" name="lname" class="form-control" placeholder="Lastname" value="<?php echo $row['lname']; ?>" aria-describedby="basic-addon1" required autofocus>
+    <input type="text" name="lname" class="form-control" placeholder="Lastname" value="<?php echo $row['lastname']; ?>" aria-describedby="basic-addon1" required autofocus>
  </td>
     </tr>
     
@@ -116,8 +112,8 @@
     <tr>
  
     <td colspan="5">
-    Tabulator Current Password:
-    <input type="password" name="tab_password" class="form-control" placeholder="Tabulator Current Password" aria-describedby="basic-addon1" required autofocus>
+    Staff Current Password:
+    <input type="password" name="tab_password" class="form-control" placeholder="Staff Current Password" aria-describedby="basic-addon1" required autofocus>
     </td>
      
     </tr>
@@ -180,11 +176,8 @@
     Firstname:
     <input type="text" name="fname" class="form-control" placeholder="Firstname" aria-describedby="basic-addon1" required autofocus>
  </td>
-    <td>&nbsp;</td>
-    <td>
-    Middlename:
-    <input type="text" name="mname" class="form-control" placeholder="Middlename" aria-describedby="basic-addon1" required autofocus>
- </td>
+    
+    
     <td>&nbsp;</td>
     <td>
     Lastname:
@@ -249,19 +242,19 @@
 
 
   
-            </div><!-- end panel body -->
-          </div> <!-- end panel -->
-  </div><!-- end col-6 -->
+            </div>
+          </div>
+  </div>
   
    <div class="col-lg-3">  </div>
    
-</div> <!-- end container -->
+</div> 
           
           
    <?php include('footer.php'); ?>
 
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    
     <script src="javascript/jquery1102.min.js"></script>
     <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
     
@@ -288,9 +281,8 @@
 if(isset($_POST['add_tabulator']))
 {
  
-   $fname=$_POST['fname']; 
-   $mname=$_POST['mname'];  
-   $lname=$_POST['lname'];  
+   $fname=$_POST['firstname'];
+   $lname=$_POST['lastname'];  
    
    $username=$_POST['username'];  
    $password=$_POST['passwordx'];  
@@ -314,18 +306,18 @@ if(isset($_POST['add_tabulator']))
      $active_sub_event=$org_row['active_sub_event'];
      		
      
-      $conn->query("insert into organizer(fname,mname,lname,username,password,org_id,access,status)
-      values('$fname','$mname','$lname','$username','$password','$session_id','Tabulator','offline')");
+      $conn->query("insert into organizer(firstname, lastname,username,password,org_id,access,status)
+      values('$firstname','$lastname','$username','$password','$session_id','Staff','offline')");
 
         ?>	
         <script>
-        alert('Tabulator <?php echo $fname; ?> successfully added...');
-        window.location = 'edit_tabulator.php';
+        alert('Staff <?php echo $fname; ?> successfully added...');
+        window.location = 'edit_staff.php';
 		</script>
         <?php }else{ ?>	
         <script>
         alert('Confirmation Password error... Pls. contact event organizer.');
-        window.location = 'edit_tabulator.php';
+        window.location = 'edit_staff.php';
 		</script><?php	
 		}
     
@@ -338,7 +330,7 @@ if(isset($_POST['add_tabulator']))
   
   
 <script>
-alert('Tabulator <?php echo $fname." ".$mname." ".$lname; ?> registration cannot be done. Password and Re-typed password did not match.');						
+alert('Staff <?php echo $fname." ".$lname; ?> registration cannot be done. Password and Re-typed password did not match.');						
 </script>
 
 

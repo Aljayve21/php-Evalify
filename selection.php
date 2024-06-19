@@ -190,8 +190,7 @@ if(isset($_POST['org_panel']))
     
     $check_pass=$_POST['check_pass'];
     $user_password=$_POST['user_password'];
-    // print($check_pass. " = " . $user_password);
-    // exit;
+
   if($check_pass==$user_password) 
   {
    ?>

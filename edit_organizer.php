@@ -33,7 +33,7 @@
 
 
 
- <a href="edit_staff.php" class="btn btn-danger"><strong>STAFF SETTINGS &raquo;</strong></a>  
+ <a href="edit_staff.php" class="btn btn-danger"><strong>Staff SETTINGS &raquo;</strong></a>  
  
  <hr />
  
@@ -85,8 +85,6 @@
    </td>
     </tr>
     
-     
-    
     
      
  
@@ -107,12 +105,7 @@
         
     <table align="center">
      <tr><td colspan="5">&nbsp; <hr /></td></tr>
-    <tr>
     
-    
- </td>
- 
-    </tr>
    
     
      <tr><td colspan="5">&nbsp;</td></tr>

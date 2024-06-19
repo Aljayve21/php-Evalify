@@ -28,11 +28,11 @@ if($session_access == "Organizer")
 
 else
 {
-    $session_userid = $_SESSION['userid'];
-    $user_query = $conn->query("select * from organizer where organizer_id = '$session_id");
+    $session_userid=$_SESSION['userid'];
+    $user_query = $conn->query("select * from organizer where organizer_id = '$session_id'");
     $user_row = $user_query->fetch();
 
-    $tab_query = $conn->query("select * from user where organizer_id = '$session_userid'");
+    $tab_query = $conn->query("select * from organizer where organizer_id = '$session_userid'");
     $tab_row = $tab_query->fetch();
     $tabname = $tab_row['firstname']. " ".$tab_row['lastname'];
 }
