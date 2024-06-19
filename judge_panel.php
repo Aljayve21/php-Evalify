@@ -677,9 +677,6 @@ if($getContestant_id=="allTally")
                                
                                 
                                 
-                                //end of Tie ctr #3
-                                
-                                //start of Tie ctr #4
                                 
                                 
                                 elseif($rankCtr==4 AND $scoreCHK_query->rowcount()==2)

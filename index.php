@@ -23,7 +23,7 @@
     <header class="jumbotron subhead"id="overview">
         <div class="container">
             <h1>Welcome</h1>
-            <p class="lead">An Objective Approach to Event Judging...</p>
+            <p class="lead">Event Scoresheets Management System</p>
         </div>
     </header>
     
