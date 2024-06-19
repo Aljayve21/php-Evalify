@@ -62,6 +62,34 @@ $i4++;
 }
 return $code4;
 }
+
+function randomcode5() {
+  $var4 = "abcdefghijkmnopqrstuvwxyz0123456789";
+  srand((double)microtime()*1000000);
+  $i4 = 0;
+  $code4 = '' ;
+  while ($i4 <= 5) {
+  $num4 = rand() % 33;
+  $tmp4 = substr($var4, $num4, 1);
+  $code4 = $code4 . $tmp4;
+  $i4++;
+  }
+  return $code4;
+  }
+
+  function randomcode6() {
+    $var4 = "abcdefghijkmnopqrstuvwxyz0123456789";
+    srand((double)microtime()*1000000);
+    $i4 = 0;
+    $code4 = '' ;
+    while ($i4 <= 5) {
+    $num4 = rand() % 33;
+    $tmp4 = substr($var4, $num4, 1);
+    $code4 = $code4 . $tmp4;
+    $i4++;
+    }
+    return $code4;
+    }
  
 ?>
 
@@ -312,7 +340,7 @@ jQuery(document).ready(function($){
 jQuery(document).ready(function($){
     $('.my-formx .add-boxx').click(function(){
         var m = $('.text-boxx').length + 2;
-        if( 4 < m ) {
+        if( 25 < m ) {
             alert('Maximum Number of Judges reach!');
             return false;
         }
