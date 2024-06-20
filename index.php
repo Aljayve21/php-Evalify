@@ -76,10 +76,10 @@
                     <th class="login_user" align="center"><h4>Login</h4></th>
                 </thread>
 
-                <tr class="tr2">
+                <tr style="background-color: #b0c7de;">
                     <td>
                     <h5><i class="icon-user"></i>  USERNAME:</h5>
-                    <input class="form-control btn-block text1" type="text" name="username" placeholder="Username" required="true" autofocus="true" />
+                    <input style="font-size: large; height: 35px !important; text-indent: 7px !important;" class="form-control btn-block" type="text" name="username" placeholder="Username" required="true" autofocus="true" />
  
                     <h5><i class="icon-lock"></i>  PASSWORD:</h5>
                     <input style="font-size: large; height: 35px !important; text-indent: 7px !important;" class="form-control btn-block" type="password"  name="password" placeholder="Password" required="true" autofocus="true" />
