@@ -170,101 +170,68 @@ div.panel {
        <table align="center">
        
       
-<?php
-    
-$sy_query = $conn->query("select * FROM main_event where organizer_id='$session_id' AND status='activated'") or die(mysql_error());
-while ($sy_row = $sy_query->fetch()) 
-{ ?>
+       <?php
+$sy_query = $conn->query("SELECT * FROM main_event WHERE organizer_id='$session_id' AND status='activated'") or die(mysql_error());
+while ($sy_row = $sy_query->fetch()) { ?>
+    <tr>
+        <td>
+            <?php 
+            $sy = $sy_row['sy'];
+            $MEidxxx = $sy_row['mainevent_id'];
 
-<tr>
-<td>
-       
-<?php 
- 
-$sy=$sy_row['sy'];
-$MEidxxx=$sy_row['mainevent_id'];
-  
-          $event_query = $conn->query("select * from main_event where mainevent_id='$MEidxxx' AND status='activated'") or die(mysql_error());
-		while ($event_row = $event_query->fetch()) 
-        { ?>
-       
-           <button class="accordion"><strong><?php echo $event_row['event_name']; ?></strong></button> 
-              <?php }   ?>
+            $event_query = $conn->query("SELECT * FROM main_event WHERE mainevent_id='$MEidxxx' AND status='activated'") or die(mysql_error());
+            while ($event_row = $event_query->fetch()) { ?>
+                <button class="accordion"><strong><?php echo $event_row['event_name']; ?></strong></button> 
+            <?php } ?>
               
-         <div class="panel">
-         
-         
-         <table class="table table-striped">
-          
-          <thead>
-        <th>Event Name</th>
-        
-        <th>View Score Sheet - Select Judge</th>
-          </thead>
-          
-          <tbody>
-         <?php   
-          $s_event_query = $conn->query("select * from sub_event where mainevent_id='$MEidxxx'") or die(mysql_error());
-		while ($s_event_row = $s_event_query->fetch()) 
-        { 
-            $se_id=$s_event_row['subevent_id'];
-            ?>
-     <tr>
-     <td>
-     <div class="nav-collapse collapse">
-     <ul class="nav">
-     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><strong><?php echo $s_event_row['event_name']; ?></strong> <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                  
-                  <li>
-                  <a title="Go to live viewing of this Sub-Event scores." target="_blank" href="updateview.php?sid=<?php echo $se_id; ?>">Live View</a> 
-                  </li>
-                  </ul>
-               
-     </ul>
-     </div>
-     </td>
-     <td>
- 
-     <?php   
-          $judge_query = $conn->query("select * from judges where subevent_id='$se_id' order by judge_ctr") or die(mysql_error());
-		while ($judge_row = $judge_query->fetch()) 
-        { ?>
-     
-     <a style="margin-top: 4px !important;" title="click to rank contestant score's for this judge" target="_blank" href="view_score_sheet.php?event_id=<?php echo $se_id ; ?>&judge_id=<?php echo $judge_row['judge_id']; ?>" class="btn btn-info"><i class="icon icon-tasks"></i> <?php echo $judge_row['judge_ctr']; ?>. <?php echo $judge_row['fullname']; ?></a>
-      <?php } ?>
- 
-     </td>
-     
-     <td width="128">
-        <a title="click to set points deductions" target="_blank" href="deductScores.php?event_id=<?php echo $se_id ; ?>" class="btn btn-danger"><i class="icon icon-minus-sign"></i></a>
-
-        <a title="click to set final result for this sub-event" target="_blank" href="result_title.php?event_id=<?php echo $se_id ; ?>" class="btn btn-primary"><i class="icon icon-star"></i></a>
-        
-        <a title="click to print results" target="_blank" href="result_sheet.php?event_id=<?php echo $se_id ; ?>" class="btn btn-primary"><i class="icon icon-print"></i></a>
- 
-     </td>
-     
-     </tr>
-     <?php } ?>
-     
-     
-            </tbody>
-     
-          </table>
-          <br / >
-        <hr />  
-        
-        </div>
-          
-       
-        
-        
+            <div class="panel">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>View Score Sheet - Select Judge</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php   
+                        $s_event_query = $conn->query("SELECT * FROM sub_event WHERE mainevent_id='$MEidxxx'") or die(mysql_error());
+                        while ($s_event_row = $s_event_query->fetch()) { 
+                            $se_id = $s_event_row['subevent_id'];
+                            ?>
+                            <tr>
+                                <td>
+                                    <div class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><strong><?php echo $s_event_row['event_name']; ?></strong> <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a title="Go to live viewing of this Sub-Event scores." target="_blank" href="updateview.php?sid=<?php echo $se_id; ?>">Live View</a> 
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>
+                                    <?php   
+                                    $judge_query = $conn->query("SELECT * FROM judges WHERE subevent_id='$se_id' ORDER BY judge_ctr") or die(mysql_error());
+                                    while ($judge_row = $judge_query->fetch()) { ?>
+                                        <a style="margin-top: 4px !important;" title="click to rank contestant score's for this judge" target="_blank" href="view_score_sheet.php?event_id=<?php echo $se_id; ?>&judge_id=<?php echo $judge_row['judge_id']; ?>" class="btn btn-info"><i class="icon icon-tasks"></i> <?php echo $judge_row['judge_ctr']; ?>. <?php echo $judge_row['fullname']; ?></a>
+                                    <?php } ?>
+                                </td>
+                                <td width="128">
+                                    <a title="click to set points deductions" target="_blank" href="deductScores.php?event_id=<?php echo $se_id; ?>" class="btn btn-danger"><i class="icon icon-minus-sign"></i></a>
+                                    <a title="click to set final result for this sub-event" target="_blank" href="result_title.php?event_id=<?php echo $se_id; ?>" class="btn btn-primary"><i class="icon icon-star"></i></a>
+                                    <a title="click to print results" target="_blank" href="result_sheet.php?event_id=<?php echo $se_id; ?>" class="btn btn-primary"><i class="icon icon-print"></i></a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+                <br />
+                <hr />  
+            </div>
         </td>
-      </tr>
-        
-        
-        <?php } ?>     
+    </tr>
+<?php } ?>
+ 
           
          </table>
         

@@ -84,7 +84,7 @@ $se_row = $se_query->fetch();
       <h1>
         <?php echo $se_name; ?> Settings
       </h1>
-      <p class="lead">Judging Management System</p>
+      <p class="lead">Event Scoresheets Management System</p>
     </div>
   </header>
 
@@ -800,127 +800,145 @@ if(isset($_POST['save_settings']))
 
 
 
-  <?php
- if (isset($_POST['delete_cont']))
-{
+<?php
+if (isset($_POST['delete_cont'])) {
+    include('dbcon.php');  
+    session_start();
 
-$org_pass = $_POST['org_pass'];
-
- $sub_event_id=$_POST['sub_event_id'];
-    $se_name=$_POST['se_name'];
+    $org_pass = $_POST['org_pass'];
+    $sub_event_id = $_POST['sub_event_id'];
+    $se_name = $_POST['se_name'];
     
     
- if($check_pass==$org_pass){
-    
- 
+    $stmt = $conn->prepare("SELECT password FROM organizer WHERE organizer_id = :organizer_id");
+    $stmt->execute(['organizer_id' => $_SESSION['id']]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $check_pass = $row['password'];
 
-    $id=$_POST['selector'];
+    if ($check_pass === $org_pass) {
+        if (!empty($_POST['selector'])) {
+            $id = $_POST['selector'];
+            $N = count($id);
 
-    $N = count($id);
-    for($i=0; $i < $N; $i++)
-    {
- $conn->query("delete from contestants where contestant_id='$id[$i]'"); 
- 
- $conn->query("delete from sub_results where contestant_id='$id[$i]'"); 
+            for ($i = 0; $i < $N; $i++) {
+                $stmt = $conn->prepare("DELETE FROM contestants WHERE contestant_id = :contestant_id");
+                $stmt->execute(['contestant_id' => $id[$i]]);
+                $stmt = $conn->prepare("DELETE FROM sub_results WHERE contestant_id = :contestant_id");
+                $stmt->execute(['contestant_id' => $id[$i]]);
+            }
+
+            echo "<script>
+                    alert('Contestant(s) successfully deleted.');
+                    window.location.href = 'sub_event_details_edit.php?sub_event_id={$sub_event_id}&se_name={$se_name}';
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Please select contestant(s) to delete.');
+                    window.location.href = 'sub_event_details_edit.php?sub_event_id={$sub_event_id}&se_name={$se_name}';
+                  </script>";
+        }
+    } else {
+        echo "<script>
+                alert('Confirmation password is invalid!');
+                window.location.href = 'sub_event_details_edit.php?sub_event_id={$sub_event_id}&se_name={$se_name}';
+              </script>";
     }
-
-  
-
-  ?>
-  <script>window.location = 'sub_event_details_edit.php?sub_event_id=<?php echo $sub_event_id;?>&se_name=<?php echo $se_name;?>';
-    alert('Contestant(s) successfully deleted.');</script>
-  <?php
 }
-else
-{
-      ?>
-  <script>window.location = 'sub_event_details_edit.php?sub_event_id=<?php echo $sub_event_id;?>&se_name=<?php echo $se_name;?>';
-    alert('Confirmation password is invalid!');</script>
-  <?php
-} }
 ?>
 
 
 
 
-  <?php
- if (isset($_POST['delete_judge']))
-{
 
-$org_pass = $_POST['org_pass'];
+<?php
+if (isset($_POST['delete_judge'])) {
 
- $sub_event_id=$_POST['sub_event_id'];
-    $se_name=$_POST['se_name'];
+
+    $org_pass = $_POST['org_pass'];
+    $sub_event_id = $_POST['sub_event_id'];
+    $se_name = $_POST['se_name'];
     
-    
- if($check_pass==$org_pass){
-    
- 
 
-    $id=$_POST['selector'];
+    $stmt = $conn->prepare("SELECT password FROM organizer WHERE organizer_id = :organizer_id");
+    $stmt->execute(['organizer_id' => $_SESSION['id']]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $check_pass = $row['password'];
 
-    $N = count($id);
-    for($i=0; $i < $N; $i++)
-    {
- $conn->query("delete from judges where judge_id='$id[$i]'"); 
- $conn->query("delete from sub_results where judge_id='$id[$i]'"); 
+    if ($check_pass === $org_pass) {
+        if (!empty($_POST['selector'])) {
+            $id = $_POST['selector'];
+            $N = count($id);
+
+            for ($i = 0; $i < $N; $i++) {
+                $stmt = $conn->prepare("DELETE FROM judges WHERE judge_id = :judge_id");
+                $stmt->execute(['judge_id' => $id[$i]]);
+                $stmt = $conn->prepare("DELETE FROM sub_results WHERE judge_id = :judge_id");
+                $stmt->execute(['judge_id' => $id[$i]]);
+            }
+
+            echo "<script>
+                    alert('Judge(s) successfully deleted.');
+                    window.location.href = 'sub_event_details_edit.php?sub_event_id={$sub_event_id}&se_name={$se_name}';
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Please select judge(s) to delete.');
+                    window.location.href = 'sub_event_details_edit.php?sub_event_id={$sub_event_id}&se_name={$se_name}';
+                  </script>";
+        }
+    } else {
+        echo "<script>
+                alert('Confirmation password is invalid!');
+                window.location.href = 'sub_event_details_edit.php?sub_event_id={$sub_event_id}&se_name={$se_name}';
+              </script>";
     }
-
- 
-
-  ?>
-  <script>window.location = 'sub_event_details_edit.php?sub_event_id=<?php echo $sub_event_id;?>&se_name=<?php echo $se_name;?>';
-    alert('Contestant(s) successfully deleted.');</script>
-  <?php
 }
-else
-{
-      ?>
-  <script>window.location = 'sub_event_details_edit.php?sub_event_id=<?php echo $sub_event_id;?>&se_name=<?php echo $se_name;?>';
-    alert('Confirmation password is invalid!');</script>
-  <?php
-} }
 ?>
 
 
 
-  <?php
- if (isset($_POST['delete_crit']))
-{
 
-$org_pass = $_POST['org_pass'];
+<?php
+if (isset($_POST['delete_crit'])) {
+    
 
- $sub_event_id=$_POST['sub_event_id'];
-    $se_name=$_POST['se_name'];
+    $org_pass = $_POST['org_pass'];
+    $sub_event_id = $_POST['sub_event_id'];
+    $se_name = $_POST['se_name'];
     
     
- if($check_pass==$org_pass){
-    
- 
+    $stmt = $conn->prepare("SELECT password FROM organizer WHERE organizer_id = :organizer_id");
+    $stmt->execute(['organizer_id' => $_SESSION['id']]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $check_pass = $row['password'];
 
-    $id=$_POST['selector'];
+    if ($check_pass === $org_pass) {
+        if (!empty($_POST['selector'])) {
+            $id = $_POST['selector'];
+            $N = count($id);
 
-    $N = count($id);
-    for($i=0; $i < $N; $i++)
-    {
- $conn->query("delete from criteria where criteria_id='$id[$i]'"); 
- 
+            for ($i = 0; $i < $N; $i++) {
+                $stmt = $conn->prepare("DELETE FROM criteria WHERE criteria_id = :criteria_id");
+                $stmt->execute(['criteria_id' => $id[$i]]);
+            }
+
+            echo "<script>
+                    alert('Criteria(s) successfully deleted.');
+                    window.location.href = 'sub_event_details_edit.php?sub_event_id={$sub_event_id}&se_name={$se_name}';
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Please select criteria to delete.');
+                    window.location.href = 'sub_event_details_edit.php?sub_event_id={$sub_event_id}&se_name={$se_name}';
+                  </script>";
+        }
+    } else {
+        echo "<script>
+                alert('Confirmation password is invalid!');
+                window.location.href = 'sub_event_details_edit.php?sub_event_id={$sub_event_id}&se_name={$se_name}';
+              </script>";
     }
-
- 
-
-  ?>
-  <script>window.location = 'sub_event_details_edit.php?sub_event_id=<?php echo $sub_event_id;?>&se_name=<?php echo $se_name;?>';
-    alert('Criteria(s) successfully deleted.');</script>
-  <?php
 }
-else
-{
-      ?>
-  <script>window.location = 'sub_event_details_edit.php?sub_event_id=<?php echo $sub_event_id;?>&se_name=<?php echo $se_name;?>';
-    alert('Confirmation password is invalid!');</script>
-  <?php
-} }
 ?>
 
   <?php include('footer.php'); ?>
