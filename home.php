@@ -319,7 +319,7 @@ $MECtr = $MEctrQuery->rowCount();  ?>
                 
                 <div class="collapse indent" id="listSubEvents<?php echo $main_event_id; ?>">
                                     
-                                    <h4>List of Portitions</h4>
+                                    <h4>List of Portions</h4>
                                     <table align="center" class="table table-bordered" id="example">
                                     
                                     <thead>
@@ -639,7 +639,7 @@ $MECtr = $MEctrQuery->rowCount();  ?>
                                       <input name="main_event_id" type="hidden" value="<?php echo $main_event_id; ?>" />
                
                                  
-                                      <strong>Portiions Title</strong>:<br />
+                                      <strong>Portions Title</strong>:<br />
                                       <input placeholder="Enter Portion title" name="sub_event_name" class="form-control btn-block" style="text-indent: 7px !important; height: 30px !important;" type="text" required="true"/> 
                                       <br />
                                      

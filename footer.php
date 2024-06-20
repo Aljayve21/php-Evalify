@@ -1,5 +1,5 @@
-<footer class="py-4 bg-light mt-auto d-flex">
-    <div class="container-fluid px-4">
+<footer class="footer">
+    <div class="container">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">Copyright &copy; Evalify 2024</div>
             <div>

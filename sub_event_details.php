@@ -803,6 +803,7 @@ alert('Event details successfully set.');
  
  
 } ?>
+
   
 <?php include('footer.php'); ?>
 
