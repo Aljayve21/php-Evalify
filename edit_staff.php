@@ -12,7 +12,7 @@ include('session.php');
     <header class="jumbotron subhead" id="overview">
         <div class="container">
             <h1>Settings - Staff</h1>
-            <p class="lead">Judging Management System</p>
+            <p class="lead">Event Scoresheets Management System</p>
         </div>
     </header>
 
