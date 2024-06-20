@@ -210,8 +210,8 @@ while ($jjn_result_row = $jjn_result_query->fetch()) {
     ?>
             <td>
             <table>
-            <tr><td align="center">&nbsp;&nbsp;&nbsp;<u><strong><?php echo $jjn_result_row['fname']." ".$jjn_result_row['mname']." ".$jjn_result_row['lname'];?></strong></u>&nbsp;&nbsp;&nbsp;</td></tr>
-             <tr><td align="center">Tabulator</td></tr>
+            <tr><td align="center">&nbsp;&nbsp;&nbsp;<u><strong><?php echo $jjn_result_row['firstname']." ".$jjn_result_row['lastname'];?></strong></u>&nbsp;&nbsp;&nbsp;</td></tr>
+             <tr><td align="center">Staff</td></tr>
             </table>
             </td>
     

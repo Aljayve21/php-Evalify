@@ -746,9 +746,7 @@ if($getContestant_id=="allTally")
                                 }
                                
          
-                                 //end of Tie ctr #4
                                 
-                                //start of Tie ctr #5
                                 
                                 
                                 elseif($rankCtr==5 AND $scoreCHK_query->rowcount()==2)
@@ -811,9 +809,7 @@ if($getContestant_id=="allTally")
                                 
                              
          
-                                 //end of Tie ctr #5
                                 
-                                //start of Tie ctr #6
                                 
                                 
                                 elseif($rankCtr==6 AND $scoreCHK_query->rowcount()==2)
@@ -869,9 +865,6 @@ if($getContestant_id=="allTally")
                   
                   
          
-                                 //end of Tie ctr #6
-                                
-                                //start of Tie ctr #7
                                 
                                 elseif($rankCtr==7 AND $scoreCHK_query->rowcount()==2)
                                 {
@@ -917,9 +910,7 @@ if($getContestant_id=="allTally")
                      
                                
          
-                                 //end of Tie ctr #7
-                                
-                                //start of Tie ctr #8
+                                 
                                 
                                 
                                 elseif($rankCtr==8 AND $scoreCHK_query->rowcount()==2)
@@ -959,9 +950,7 @@ if($getContestant_id=="allTally")
                      
                                 
          
-                                 //end of Tie ctr #8
                                 
-                                //start of Tie ctr #9
                                 
                                 elseif($rankCtr==9 AND $scoreCHK_query->rowcount()==2)
                                 {
@@ -992,9 +981,6 @@ if($getContestant_id=="allTally")
                        
                                 
          
-                                 //end of Tie ctr #9
-                                
-                                //start of Tie ctr #10
                                 
                                 elseif($rankCtr==10 AND $scoreCHK_query->rowcount()==2)
                                 {
@@ -1015,9 +1001,6 @@ if($getContestant_id=="allTally")
                                 }
                                  
                                
-                                 //end of Tie ctr #10
-                                
-                                //start of Tie ctr #11
                                 
                                 
                                 elseif($rankCtr==11 AND $scoreCHK_query->rowcount()==2)
@@ -1038,11 +1021,11 @@ if($getContestant_id=="allTally")
                                 
                                 } 
          
-                                 //end of Tie ctr #11
+                                 
                              
                         } 
                                 ?>
-<!-- auto ranking end --> <!-- auto ranking end --> <!-- auto ranking end --> <!-- auto ranking end --> <!-- auto ranking end --> <!-- auto ranking end --> <!-- auto ranking end --> <!-- auto ranking end --> 
+
 
                                 
                         <td style="background:#e4f6e2">

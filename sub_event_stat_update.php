@@ -22,7 +22,7 @@
     
                 <script>
                 window.location = 'home.php';
-                alert('Portion: <?php echo $se_name; ?> deactivated successfully!');						
+                alert('Category: <?php echo $se_name; ?> deactivated successfully!');						
                 </script>
 
 
@@ -35,7 +35,7 @@ if($cont_query->rowCount()>0)
 {
     ?>
                 <script>
-                alert('Portion :<?php echo $se_name; ?> activated successfully!');	
+                alert('Category: <?php echo $se_name; ?> activated successfully!');	
                 window.location = 'sub_event_details_edit.php?sub_event_id=<?php echo $sub_event_id; ?>&se_name=<?php echo $se_name; ?>';				
                 </script>
 
@@ -46,7 +46,7 @@ else
 {
   ?>
                 <script>
-                alert('Portion :<?php echo $se_name; ?> activated successfully!');	
+                alert('Category :<?php echo $se_name; ?> activated successfully!');	
                 window.location = 'sub_event_details.php?sub_event_id=<?php echo $sub_event_id; ?>&se_name=<?php echo $se_name; ?>';				
                 </script>
 

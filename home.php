@@ -241,11 +241,11 @@ $MECtr = $MEctrQuery->rowCount();  ?>
                         <?php
                         if($event_row['status']=="deactivated") { ?>
                                     
-                        <a style="text-align: left !important; text-indent:7px !important;" data-toggle="collapse" class="btn btn-default btn-block" title="Complete Event name: <?php echo $event_row['event_name']; ?>. This Main Event is deactivated" href="#collapse2<?php echo $main_event_id; ?>"><?php echo $myME_ctr.". ".substr($event_row['event_name'], 0, 22); ?><span class="badge badge-default pull-right" style="margin-right: 7px !important;"><?php if($SECtr>0 AND $SECtr<2){echo $SECtr." Talent Portion";} elseif($SECtr>1){ echo $SECtr." Talent Portion";}else{ echo "0 Talent Portion";} ; ?></span></a>
+                        <a style="text-align: left !important; text-indent:7px !important;" data-toggle="collapse" class="btn btn-default btn-block" title="Complete Event name: <?php echo $event_row['event_name']; ?>. This Main Event is deactivated" href="#collapse2<?php echo $main_event_id; ?>"><?php echo $myME_ctr.". ".substr($event_row['event_name'], 0, 22); ?><span class="badge badge-default pull-right" style="margin-right: 7px !important;"><?php if($SECtr>0 AND $SECtr<2){echo $SECtr." Category";} elseif($SECtr>1){ echo $SECtr." Category";}else{ echo "0 Category";} ; ?></span></a>
                         
                         <?php } else { ?>
                         
-                        <a title="Complete Event name: <?php echo $event_row['event_name']; ?>" style="text-align: left !important; text-indent:7px !important;" data-toggle="collapse" class="btn btn-info btn-block" href="#collapse2<?php echo $main_event_id; ?>"><?php echo $myME_ctr.". ".substr($event_row['event_name'], 0, 22); ?><span class="badge badge-warning pull-right" style="margin-right: 7px !important;"><strong><?php if($SECtr>0 AND $SECtr<2){echo $SECtr." Talent Portion";} elseif($SECtr>1){ echo $SECtr." Talent Portion";}else{ echo "0 Talent Portion";} ; ?></strong></span></a>
+                        <a title="Complete Event name: <?php echo $event_row['event_name']; ?>" style="text-align: left !important; text-indent:7px !important;" data-toggle="collapse" class="btn btn-info btn-block" href="#collapse2<?php echo $main_event_id; ?>"><?php echo $myME_ctr.". ".substr($event_row['event_name'], 0, 22); ?><span class="badge badge-warning pull-right" style="margin-right: 7px !important;"><strong><?php if($SECtr>0 AND $SECtr<2){echo $SECtr." Category";} elseif($SECtr>1){ echo $SECtr." Category";}else{ echo "0 Category";} ; ?></strong></span></a>
                         
                         <?php }?>
  
@@ -319,11 +319,11 @@ $MECtr = $MEctrQuery->rowCount();  ?>
                 
                 <div class="collapse indent" id="listSubEvents<?php echo $main_event_id; ?>">
                                     
-                                    <h4>List of Portions</h4>
+                                    <h4>List of Category</h4>
                                     <table align="center" class="table table-bordered" id="example">
                                     
                                     <thead>
-                                    <th><strong>Portion Title</strong></th>
+                                    <th><strong>Category Title</strong></th>
                                     <th><center><strong>Status</strong></center></th>
                                     <th><center><strong>Actions</strong></center></th>
                                     </thead>
@@ -355,7 +355,7 @@ $MECtr = $MEctrQuery->rowCount();  ?>
                                     <form method="POST">
                                     <input type="hidden" name="sub_event_id" value="<?php echo $sub_event_row['subevent_id']; ?>" />
                                     <input type="hidden" name="se_name" value="<?php echo $sub_event_row['event_name']; ?>" />
-                                    <input name="se_new_name" type="text" placeholder="Enter Talent Portion Title" value="<?php echo $sub_event_row['event_name']; ?>" />
+                                    <input name="se_new_name" type="text" placeholder="Enter Category Title" value="<?php echo $sub_event_row['event_name']; ?>" />
                                     <br />
                                     <button style="margin-right: 5px !important;" name="edit_se" class="btn btn-success pull-right"><i class="icon-ok"></i> <strong>UPDATE</strong></button>
                                     </form>
@@ -387,7 +387,7 @@ $MECtr = $MEctrQuery->rowCount();  ?>
                                      
                                     <script>		                                      
                                     window.location = 'home.php';
-                                    alert('Portion title: <?php echo $se_name." was changed to: ".$se_new_name; ?> successfully!');						
+                                    alert('Category title: <?php echo $se_name." was changed to: ".$se_new_name; ?> successfully!');						
                                     </script>
                                     
                                     <?php  
@@ -404,7 +404,7 @@ $MECtr = $MEctrQuery->rowCount();  ?>
                                     <table class="table table-bordered">
                                     
                                     <tr>
-                                    <td><h4>Delete Portion</h4></td>
+                                    <td><h4>Delete Category</h4></td>
                                     </tr>
                                     <tr>
                                     <td>
@@ -442,7 +442,7 @@ $MECtr = $MEctrQuery->rowCount();  ?>
                                     
                                     <?php } else { ?>
                                     <div class="alert alert-warning">
-                                    <h3>Cannot delete Portion. There are saved data for this Portion.</h3>
+                                    <h3>Cannot delete Category. There are saved data for this Category.</h3>
                                     </div>
                                     
                                     <?php } ?>
@@ -549,7 +549,7 @@ $MECtr = $MEctrQuery->rowCount();  ?>
                                     <td colspan="3">
                                     <div class="alert alert-warning">
                                     <h3>
-                                    No data to display. Add Portion <a href="#" data-toggle="collapse" data-target="#addSubEvents<?php echo $main_event_id; ?>" data-parent="#myGroup<?php echo $main_event_id; ?>"> here &raquo;</a>
+                                    No data to display. Add Category <a href="#" data-toggle="collapse" data-target="#addSubEvents<?php echo $main_event_id; ?>" data-parent="#myGroup<?php echo $main_event_id; ?>"> here &raquo;</a>
                                     </h3>
                                     </div>
                                     </td>
@@ -639,8 +639,8 @@ $MECtr = $MEctrQuery->rowCount();  ?>
                                       <input name="main_event_id" type="hidden" value="<?php echo $main_event_id; ?>" />
                
                                  
-                                      <strong>Portions Title</strong>:<br />
-                                      <input placeholder="Enter Portion title" name="sub_event_name" class="form-control btn-block" style="text-indent: 7px !important; height: 30px !important;" type="text" required="true"/> 
+                                      <strong>Category Title</strong>:<br />
+                                      <input placeholder="Enter Category title" name="sub_event_name" class="form-control btn-block" style="text-indent: 7px !important; height: 30px !important;" type="text" required="true"/> 
                                       <br />
                                      
                                    
@@ -868,7 +868,7 @@ if(isset($_POST['add_event']))
  ?>
  <script>
  window.location = 'home.php';
- alert('Portion <?php echo $sub_event_name; ?> created successfully!');						
+ alert('Category <?php echo $sub_event_name; ?> created successfully!');						
  </script>
  <?php } ?>
  
@@ -985,7 +985,7 @@ if(isset($_POST['deleteEvent']))
             
 <script>
 window.location = 'home.php';
-alert('Event: <?php echo $ma_name; ?> and its Portion and related data deleted successfully. . .');						
+alert('Event: <?php echo $ma_name; ?> and its Category and related data deleted successfully. . .');						
 </script> 
  
    <?php  } else { ?>
