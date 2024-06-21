@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2024 at 05:45 PM
+-- Generation Time: Jun 21, 2024 at 02:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,7 @@ CREATE TABLE `contestants` (
 INSERT INTO `contestants` (`contestant_id`, `fullname`, `subevent_id`, `contestant_ctr`, `status`, `txt_code`, `rand_code`) VALUES
 (1, 'constestant No. 1', 1, 1, 'finish', '', 520058),
 (2, 'Contestant No. 2', 1, 2, 'finish', '', 514799),
-(3, 'Contestant No. 3', 1, 3, 'finish', '', 2245823);
+(5, 'Contestant No.3', 1, 3, 'finish', '', 0);
 
 -- --------------------------------------------------------
 
@@ -69,7 +69,7 @@ INSERT INTO `criteria` (`criteria_id`, `subevent_id`, `criteria`, `percentage`, 
 (2, 1, 'c2', 20, 2),
 (3, 1, 'c3', 20, 3),
 (4, 1, 'c4', 20, 4),
-(5, 1, 'c5', 20, 5);
+(6, 1, 'c5', 20, 5);
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,7 @@ CREATE TABLE `main_event` (
 
 INSERT INTO `main_event` (`mainevent_id`, `event_name`, `status`, `organizer_id`, `sy`, `date_start`, `date_end`, `place`) VALUES
 (1, 'Aljayve', 'activated', 1, '2024', '2024-05-21', '2024-05-22', 'Balagtas, Bulacan'),
-(2, 'Test 101', 'activated', 1, '2023', '2024-06-03', '2024-06-04', 'fgdcjhgdfhgfhg');
+(3, 'Aljayve', 'activated', 1, '2024', '2024-06-20', '2024-06-20', 'asdasdasdasd');
 
 -- --------------------------------------------------------
 
@@ -142,7 +142,8 @@ CREATE TABLE `organizer` (
 --
 
 INSERT INTO `organizer` (`organizer_id`, `firstname`, `lastname`, `username`, `password`, `access`, `org_id`, `status`) VALUES
-(1, 'Aljayve', 'Capara', 'admin', '1234', 'Organizer', '', 'offline');
+(1, 'Aljayve', 'Capara', 'admin', '1234', 'Organizer', '', 'offline'),
+(7, 'James', 'Carter', 'staff', '1234', 'Staff', '1', 'offline');
 
 -- --------------------------------------------------------
 
@@ -163,8 +164,8 @@ CREATE TABLE `rank_system` (
 
 INSERT INTO `rank_system` (`rs_id`, `subevent_id`, `contestant_id`, `total_rank`) VALUES
 (1, 1, 1, 5.0),
-(2, 1, 2, 2.0),
-(3, 1, 3, 1.0);
+(2, 1, 2, 1.0),
+(4, 1, 5, 2.0);
 
 -- --------------------------------------------------------
 
@@ -179,17 +180,19 @@ CREATE TABLE `sub_event` (
   `event_name` varchar(255) NOT NULL,
   `status` varchar(50) NOT NULL,
   `eventdate` date NOT NULL,
-  `eventtime` time NOT NULL
+  `eventtime` time NOT NULL,
+  `view` varchar(15) NOT NULL,
+  `place` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `sub_event`
 --
 
-INSERT INTO `sub_event` (`subevent_id`, `mainevent_id`, `organizer_id`, `event_name`, `status`, `eventdate`, `eventtime`) VALUES
-(1, 1, 1, 'Aljayve', 'activated', '2024-05-21', '10:30:00'),
-(2, 2, 1, 'Aljayve', 'activated', '2024-06-03', '10:30:00'),
-(4, 1, 1, 'dancing', 'activated', '2024-06-19', '08:30:00');
+INSERT INTO `sub_event` (`subevent_id`, `mainevent_id`, `organizer_id`, `event_name`, `status`, `eventdate`, `eventtime`, `view`, `place`) VALUES
+(1, 1, 1, 'Aljayve', 'activated', '2024-05-21', '10:30:00', 'activated', ''),
+(4, 1, 1, 'dancing', 'activated', '2024-06-19', '08:30:00', 'deactivated', ''),
+(5, 3, 1, 'Aljayve', 'activated', '2024-06-20', '10:30:00', 'deactivated', 'sdfsdfsdf');
 
 -- --------------------------------------------------------
 
@@ -227,10 +230,10 @@ CREATE TABLE `sub_results` (
 
 INSERT INTO `sub_results` (`subresult_id`, `subevent_id`, `mainevent_id`, `contestant_id`, `judge_id`, `total_score`, `deduction`, `criteria_ctr1`, `criteria_ctr2`, `criteria_ctr3`, `criteria_ctr4`, `criteria_ctr5`, `criteria_ctr6`, `criteria_ctr7`, `criteria_ctr8`, `criteria_ctr9`, `criteria_ctr10`, `comments`, `rank`, `judge_rank_stat`, `place_title`) VALUES
 (1, 1, 1, 1, 1, 38.0, 0.0, 15.0, 5.5, 4.0, 8.0, 5.5, 0.0, 0.0, 0.0, 0.0, 0.0, 'ito ay testing lang ', '3', '', '3rd'),
-(2, 1, 1, 2, 1, 60.0, 0.0, 6.0, 9.0, 9.0, 18.5, 17.5, 0.0, 0.0, 0.0, 0.0, 0.0, 'ito ay testing lang', '2', '', '2nd'),
-(3, 1, 1, 3, 1, 77.5, 0.0, 16.5, 9.0, 18.0, 17.0, 17.0, 0.0, 0.0, 0.0, 0.0, 0.0, 'ito ay testing lang\r\n', '1', '', '1st'),
+(2, 1, 1, 2, 1, 60.0, 0.0, 6.0, 9.0, 9.0, 18.5, 17.5, 0.0, 0.0, 0.0, 0.0, 0.0, 'ito ay testing lang', '1', '', '1st'),
 (4, 1, 1, 1, 2, 57.0, 0.0, 4.5, 8.0, 12.0, 16.5, 16.0, 0.0, 0.0, 0.0, 0.0, 0.0, 'asnfdjnashdklasjdasd', '1', '', '3rd'),
-(5, 1, 1, 1, 3, 56.5, 0.0, 11.0, 7.0, 16.5, 7.0, 15.0, 0.0, 0.0, 0.0, 0.0, 0.0, 'testing', '1', '', '3rd');
+(5, 1, 1, 1, 3, 56.5, 0.0, 11.0, 7.0, 16.5, 7.0, 15.0, 0.0, 0.0, 0.0, 0.0, 0.0, 'testing', '1', '', '3rd'),
+(8, 1, 1, 5, 1, 55.0, 0.0, 6.5, 7.0, 18.5, 18.5, 4.5, 0.0, 0.0, 0.0, 0.0, 0.0, 'Balagtas Bulacan ', '2', '', '2nd');
 
 --
 -- Indexes for dumped tables
@@ -304,13 +307,13 @@ ALTER TABLE `sub_results`
 -- AUTO_INCREMENT for table `contestants`
 --
 ALTER TABLE `contestants`
-  MODIFY `contestant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `contestant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `criteria`
 --
 ALTER TABLE `criteria`
-  MODIFY `criteria_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `criteria_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `judges`
@@ -322,31 +325,31 @@ ALTER TABLE `judges`
 -- AUTO_INCREMENT for table `main_event`
 --
 ALTER TABLE `main_event`
-  MODIFY `mainevent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `mainevent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `organizer`
 --
 ALTER TABLE `organizer`
-  MODIFY `organizer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `organizer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `rank_system`
 --
 ALTER TABLE `rank_system`
-  MODIFY `rs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `rs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sub_event`
 --
 ALTER TABLE `sub_event`
-  MODIFY `subevent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `subevent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sub_results`
 --
 ALTER TABLE `sub_results`
-  MODIFY `subresult_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `subresult_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
